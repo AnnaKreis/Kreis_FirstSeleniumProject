@@ -43,8 +43,8 @@ public class FindElementTests {
         driver.findElement(By.id("city"));
         // by className
         driver.findElement(By.className("header"));
-        // by linkText
         System.out.println(driver.findElement(By.className("header")).getText());
+        // by linkText
         driver.findElement(By.linkText("Let the car work"));
         // by partialLinkText частичное совпадение
         driver.findElement(By.partialLinkText("car"));
@@ -63,10 +63,11 @@ public class FindElementTests {
         //driver.findElement(By.className("header"));
         driver.findElement(By.cssSelector(".header"));
 
-        //[attr='value'
+        //[attr='value']
         // href="/registration?url=%2Fsearch"
+        //точное совпадение
         driver.findElement(By.cssSelector("[href='/registration?url=%2Fsearch']"));
-        //contains ->*
+        // contains(частичное совпадение) ->*
         driver.findElement(By.cssSelector("[href*='/registration']"));
         //start->^
         driver.findElement(By.cssSelector("[href^='/reg']"));
