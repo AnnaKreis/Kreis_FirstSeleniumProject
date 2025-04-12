@@ -106,10 +106,24 @@ public class HW13 {
         driver.findElement(By.xpath("//a[@class='ico-register']/ancestor::div")); //five options
         driver.findElement(By.xpath("//a[@class='ico-register']/ancestor::div[4]")); //one option
 
-//        //child
+        // following-sibling
         driver.findElement(By.xpath("//div[@class='leftside-3']/following-sibling::div"));
         driver.findElement(By.xpath("//div[@class='nivo-caption']/following-sibling::div"));
 
+
+
+
+        //HW18
+        // following-sibling
+        driver.findElement(By.xpath("li[@class='inactive']/following-sibling::*"));
+        driver.findElement(By.xpath("ul[@class='top-menu']/following-sibling::div"));
+
+        //preceding-sibling
+        driver.findElement(By.xpath("//div[@class='header-links-wrapper']/preceding-sibling::div"));
+        driver.findElement(By.xpath("//div[@class='column follow-us']/preceding-sibling::div"));
+        driver.findElement(By.xpath("//div[@class='block block-popular-tags']/preceding-sibling::*"));
     }
+
+
 
 }
