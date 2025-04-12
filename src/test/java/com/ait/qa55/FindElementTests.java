@@ -112,8 +112,11 @@ public class FindElementTests {
         driver.findElement(By.xpath("//h1/ancestor::*")); //all
         driver.findElement(By.xpath("//h1/ancestor::div")); //two options
         driver.findElement(By.xpath("//h1/ancestor::div[2]")); //one option
-        //child потомок текущего узла
+        // following-sibling
         driver.findElement(By.xpath("//h1/following-sibling::form"));
+        //preceding-sibling до текущего на данном уровне
+        driver.findElement(By.xpath("//h2/preceding-sibling::*"));
+
     }
 
 
