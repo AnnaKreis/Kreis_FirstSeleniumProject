@@ -4,43 +4,51 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CreateAccountTests extends TestBase{
+public class CreateAccountTests extends TestBase {
+
     @Test
     public void newUserRegistrationPositiveTest() {
+        int i = (int) ((System.currentTimeMillis() / 1000) % 3600);
+
         //click on Login Link
-        driver.findElement(By.cssSelector("[href*='/register']")).click();
-
+        click(By.cssSelector("[href*='/register']"));
         //enter name to name field
-        driver.findElement(By.id("FirstName")).click();
-        driver.findElement(By.id("FirstName")).clear();
-        driver.findElement(By.id("FirstName")).sendKeys("Helen");
-
+        type(By.id("FirstName"), "Helen");
         //enter last name to last name field
-        driver.findElement(By.id("LastName")).click();
-        driver.findElement(By.id("LastName")).clear();
-        driver.findElement(By.id("LastName")).sendKeys("Straus");
-
+        type(By.id("LastName"), "Straus");
         //enter Email to mail field
-        driver.findElement(By.id("Email")).click();
-        driver.findElement(By.id("Email")).clear();
-        driver.findElement(By.id("Email")).sendKeys("hatip45779@insfou.com");
-
+//        type(By.id("Email"), "hatip45779@insfou.com");
+        type(By.id("Email"), "test" + i + "@test.com");
         //enter Password to password field
-        driver.findElement(By.id("Password")).click();
-        driver.findElement(By.id("Password")).clear();
-        driver.findElement(By.id("Password")).sendKeys("Aa!12345");
-
+        type(By.id("Password"), "Aa!12345");
         //enter Confirm Password to confirm password field
-        driver.findElement(By.id("ConfirmPassword")).click();
-        driver.findElement(By.id("ConfirmPassword")).clear();
-        driver.findElement(By.id("ConfirmPassword")).sendKeys("Aa!12345");
-
+        type(By.id("ConfirmPassword"), "Aa!12345");
         //click on Registration button
-        driver.findElement(By.id("register-button")).click();
+        click(By.id("register-button"));
 
         //verify that "Registered" is displayed
         Assert.assertTrue(isElementPresent(By.xpath("//h1[text()='Register']")));
+    }
+
+    @Test
+    public void existedUserRegistrationNegativeTest() {
+        //click on Login Link
+        click(By.cssSelector("[href*='/register']"));
+        //enter name to name field
+        type(By.id("FirstName"), "Helen");
+        //enter last name to last name field
+        type(By.id("LastName"), "Straus");
+        //enter Email to mail field
+        type(By.id("Email"), "hatip45779@insfou.com");
+        //enter Password to password field
+        type(By.id("Password"), "Aa!12345");
+        //enter Confirm Password to confirm password field
+        type(By.id("ConfirmPassword"), "Aa!12345");
+        //click on Registration button
+        click(By.id("register-button"));
+        Assert.assertTrue(isElementPresent(By.xpath("//li[text()='The specified email already exists']")));
 
 
     }
+
 }
